@@ -34,11 +34,13 @@ function optionChanged() {
   let dataset = selection.property("value")
 
   let samples_data; // initializing sample data
+  let wfreq_data; // We'll need this for the gauge chart
 
   // The following for loop runs a conditional that matches the data we need to the id selected
   for (let i=0; i<samples.length; i++){
     if (dataset == samples[i].id){
       samples_data = samples[i];
+      wfreq_data = samples[i].wfreq;
     };
   };
 
@@ -107,6 +109,7 @@ function optionChanged() {
   //------------------------------------------------------------------------------------------------------------------------//
   // Adding a Demographics Element
   //------------------------------------------------------------------------------------------------------------------------//
+ 
   let demographic_data;
 
   for (let i=0; i<metadata.length; i++){
@@ -124,5 +127,33 @@ function optionChanged() {
     <b>bbtype</b> : ${demographic_data.bbtype}<br>
     <b>wfreq</b> : ${demographic_data.wfreq}</p>`
   );
-};
 
+  //------------------------------------------------------------------------------------------------------------------------//
+  // Adding a Gauge Chart
+  //------------------------------------------------------------------------------------------------------------------------//
+  
+  let gaugeChart =[{
+    domain: { x: [0, 1], y: [0, 1] },
+    type : "indicator",
+    mode : "gauge+number",
+    value : wfreq_data,
+    title : {text:"Belly Button Washing Frequency"},
+    gauge : {
+      axis : {range:[0, 9]}
+    },
+    steps: [
+      { range: [0, 1], color: "rgb(0, 0, 255)" },
+      { range: [1, 2], color: "rgb(0, 64, 255)" },
+      { range: [2, 3], color: "rgb(0, 128, 255)" },
+      { range: [3, 4], color: "rgb(0, 192, 255)" },
+      { range: [4, 5], color: "rgb(0, 255, 255)" },
+      { range: [5, 6], color: "rgb(128, 255, 128)" },
+      { range: [6, 7], color: "rgb(255, 255, 0)" },
+      { range: [7, 8], color: "rgb(255, 192, 0)" },
+      { range: [8, 9], color: "rgb(255, 128, 0)" },
+    ]
+  }];
+
+  Plotly.newPlot("gauge", gaugeChart);
+
+};
