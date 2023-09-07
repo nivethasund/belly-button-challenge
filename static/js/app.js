@@ -76,6 +76,7 @@ function optionChanged() {
   // Creating a Bubble Chart
   //------------------------------------------------------------------------------------------------------------------------//
   
+  // Since we already have our sample data, we extract the necessary values for our bubble chart
   let x_axis = samples_data.otu_ids;
   let y_axis = samples_data.sample_values;
   let markers = samples_data.sample_values;
@@ -102,12 +103,13 @@ function optionChanged() {
     width: 1200
   };
 
-  Plotly.newPlot("bubble", bubbleChart, layout_bubble);
+  Plotly.newPlot("bubble", bubbleChart, layout_bubble); // Using Plotly to showcase the bubble chart under the "bubble" div in our html file
 
   //------------------------------------------------------------------------------------------------------------------------//
   // Adding a Demographics Element
   //------------------------------------------------------------------------------------------------------------------------//
  
+  // Similar to how we extracted sample data, we would need to do the same for the demographics info box
   let demographic_data;
   let wfreq_data; // We'll need this for the gauge chart
 
@@ -118,6 +120,7 @@ function optionChanged() {
     };
   };
 
+  // Adding the necessary html to showcase demographics for the selected id
   d3.select(".panel-body").html(
     `<p> <b>id</b> : ${demographic_data.id}<br>
     <b>ethnicity</b> : ${demographic_data.ethnicity}<br>
