@@ -21,6 +21,9 @@ d3.json(url).then(function(data) {
     selector.append("option").text(names[i]).property("value", names[i]);
   };
 
+  const defaultDatasetID = 940; // Setting a default id for charts to appear
+  optionChanged(defaultDatasetID)
+
   // This function will enable us to view the charts
   selector.on("change", optionChanged);
 
