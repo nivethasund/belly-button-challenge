@@ -14,13 +14,14 @@ d3.json(url).then(function(data) {
   metadata = data.metadata;
   samples = data.samples;
   
-  // The first step is to input all IDs into the dropdown menu
+  // The first step is to input all IDs into the dropdown menu. The following for loop will help append those values to as options
   let selector = d3.select("#selDataset")
 
   for (let i=0; i<names.length; i++){
     selector.append("option").text(names[i]).property("value", names[i]);
   };
 
+  // This function will enable us to view the charts
   selector.on("change", optionChanged);
 
 });
@@ -60,14 +61,8 @@ function optionChanged() {
   }];
 
   let layout_bar = {
-    margin: {
-        l: 100,
-        r: 100,
-        t: 0,
-        b: 50,
-    },
-    height: 500,
-    width: 600,
+    height: '100%',
+    width: '100%',
   };
 
   Plotly.newPlot("bar", barChart, layout_bar); // Using Plotly to showcase the bar chart under the "bar" div in our html file
@@ -132,7 +127,7 @@ function optionChanged() {
   );
 
   //------------------------------------------------------------------------------------------------------------------------//
-  // Adding a Gauge Chart
+  // Adding a Gauge Chart - BONUS
   //------------------------------------------------------------------------------------------------------------------------//
   
   // console.log(wfreq_data);
@@ -164,9 +159,9 @@ function optionChanged() {
 
 // Set up the Layout
 let layout_gauge = {
-    width: 400, 
-    height: 400,
-    margin: {t: 0, b:0, l:100, r:100}
+    width: '40%', 
+    height: '40%',
+    margin: {t: 0, b:0, l:100, r:100, pad:4}
 };
 
   Plotly.newPlot("gauge", gaugeChart, layout_gauge);
