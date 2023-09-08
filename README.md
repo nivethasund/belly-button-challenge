@@ -17,8 +17,6 @@ With this assignment, we dive into the various microbial species that invade our
   - A bubble chart showing the number of samples per OTU ID, each bubble size proportionate to the sample values.
   - A demographics table showing the general information of the individual who was selected.
   - BONUS: A gauge chart showing the washing frequency of the selected individual.
-  
-You can find the app deployed on [this static page](https://nivethasund.github.io/belly-button-challenge/)
 
 -----
 #### _Sources_
